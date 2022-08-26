@@ -229,7 +229,7 @@ const SignUpForm = () => {
                 </div>
                 <br />
                 <input type="submit" value="Inscription" id="validation"/>
-                <NavLink to={"/login"} className="signup-form-end">
+                <NavLink to={"/"} className="signup-form-end">
                   J'ai déjà un compte
                 </NavLink>
               </form>

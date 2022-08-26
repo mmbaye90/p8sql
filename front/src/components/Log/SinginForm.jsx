@@ -4,39 +4,47 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "../../Styles/stylesComp/login.css"
 
 const SignInForm = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-        e.stopPropagation()
-        const errorRegister = document.querySelector(".errinscription");
-        axios({
-          method: "post",
-          url: "http://localhost:3000/api/users/login",
-          data: {
-            email,
-            password,
-          },
-    
-        })
-        .then((res) => {
-            localStorage.setItem("userInfo",JSON.stringify(res.data))
-            navigate("/home")
-        })
-        .catch((err) => {
-          console.log(err.response.data.message);
-          errorRegister.innerHTML = err.response.data.message;
+  //Les states 
+  const [errors, setErrors] = useState({});
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [deactivatedUser, setDeactivatedUser] = useState(false);
+
+  const navigate = useNavigate();
+
+  //****************************************** Les fonctions **************************************/
+  const handleLogin = (e) => {
+    e.preventDefault();
+    axios({
+      method: "POST",
+      url: `http://localhost:4200/api/auth/login`,
+      data: {
+        user_email: email,
+        user_password: password,
+      },
+      withCredentials: true,
+
+    })
+      .then((res) => {
+        localStorage.setItem("user_info", JSON.stringify(res.data));
+        navigate("/home");
+      })
+      .catch((err) => {
+        setErrors({
+          ...errors,
+          message: err.response.data.errorMessage,
         });
-      };
-    
-      return (
-        <div className="login">
+        setDeactivatedUser(true);
+      });
+  };
+
+  
+  return (
+    <div className="container-bloc-form">
+      <div className="login-form">
         <form action="" onSubmit={handleLogin} id="sign-up-form">
-          <h1>Connexion</h1>
           <label htmlFor="email">Email</label>
-          <br />
           <input
             type="text"
             name="email"
@@ -44,10 +52,8 @@ const SignInForm = () => {
             onChange={(e) => setEmail(e.target.value)}
             value={email}
           />
-          <div className="email error"></div>
           <br />
           <label htmlFor="password">Mot de passe</label>
-          <br />
           <input
             type="password"
             name="password"
@@ -55,18 +61,17 @@ const SignInForm = () => {
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
-          <div className="password error"></div>
+          <br />
+          <div className="error">{errors.message}</div>
           <br />
           <input type="submit" value="Se connecter" id="validation" />
-          <br />
-          <div className="errinscription"></div>
-          <NavLink to="/signup" className="gotoSignup">
-            Vous êtes nouveau? inscrivez-vous
-         </NavLink>
-
+          <NavLink to="/signup" className="login-form-end">
+            Pas encore de compte ? Inscrivez-vous
+          </NavLink>
         </form>
-        </div>
-      );
-    };
-
+      </div>
+      <br />
+    </div>
+  );
+};
 export default SignInForm;

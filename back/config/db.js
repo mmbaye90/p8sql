@@ -7,7 +7,10 @@ const db = mysql.createConnection({
     password: "azerty",
     database: "groupomania",
 });
-
+db.connect(function(err) {
+    if (err) throw err;
+    console.log("CONNEXION  à la BD REUSSIE");
+});
 // export db
 module.exports.getDB = () => {
     return db;

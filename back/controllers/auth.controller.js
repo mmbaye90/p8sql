@@ -54,7 +54,7 @@ exports.login = (req, res) => {
                     // If match, generate JWT token
                     const maxAge = 1 * (24 * 60 * 60 * 1000);
                     const token = jwt.sign({ user_id, user_firstname, user_lastname, admin },
-                        process.env.JWT_TOKEN, {
+                        process.env.SECRET_TOKEN, {
                             expiresIn: maxAge,
                         }
                     );

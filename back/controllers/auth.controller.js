@@ -32,7 +32,7 @@ exports.signup = async(req, res) => {
 exports.login = (req, res) => {
     //===== Check if user exists in DB ======
     const { user_email, user_password: clearPassword } = req.body;
-    const sql = `SELECT user_firstname, user_lastname, user_password, user_id, admin, active FROM users WHERE user_email=?`;
+    const sql = `SELECT * FROM users WHERE user_email=?`;
     const db = dbc.getDB();
     db.query(sql, [user_email], async(err, results) => {
         if (err) {
@@ -58,12 +58,6 @@ exports.login = (req, res) => {
                             expiresIn: maxAge,
                         }
                     );
-
-                    // httpOnly: true,
-                    // maxAge,
-                    // sameSite: true,
-                    // secure: true,
-
                     // remove the password key of the response
                     delete results[0].user_password;
 
@@ -101,22 +95,9 @@ exports.logout = (req, res) => {
     res.status(200).json("OUT");
 };
 
-exports.deactivateAccount = (req, res) => {
-    const userId = req.params.id;
-    const sql = `UPDATE users u SET active=0 WHERE u.user_id = ?`;
-    const db = dbc.getDB();
-    db.query(sql, userId, (err, results) => {
-        if (err) {
-            return res.status(404).json({ err });
-        }
-        res.clearCookie("jwt");
-        res.status(200).json("DEACTIVATED");
-    });
-};
-
 exports.deleteAccount = (req, res) => {
     const userId = req.params.id;
-    const sql = `DELETE u FROM users AS u WHERE user_id = ${userId};`;
+    const sql = `DELETE u FROM users AS u WHERE user_id = ?;`;
     const db = dbc.getDB();
     db.query(sql, userId, (err, results) => {
         if (err) {

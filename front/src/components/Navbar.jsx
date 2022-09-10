@@ -1,54 +1,107 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../img/logo.png"
 import "../Styles/stylesComp/navbar.css"
-import { logout,getUserId } from "../servicies/authApi";
+import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome,faSignOut} from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
+import { useState } from "react";
+// import defaultProfil from "../img/anonymousUser.svg";
+// import signup from "../img/signup.png"
 
-const Navbar = () => {
+const Navbar =  () => {
+  const navigate = useNavigate();
+  // const [uid,setUid] = useState();
+  // const[imgUrl ,setImgUrl] = useState("");
+  const user_id = JSON.parse(localStorage.getItem("user_info")).user.user_id;
+  const[imageUrl,setImageUrl] = useState()
 
-  const handleLogout = () => {
-    logout();
-  }
-const uid = getUserId()
-console.log(` userID => ${uid}`);
+const getProfilePicture = () => {
+  axios({
+    method: "GET",
+    url: `http://localhost:4200/api/user/${user_id}`,
+    withCredentials: true,
+  })
+    .then((res) => {
+        if(res.data[0].user_picture){
+          setImageUrl(res.data[0].user_picture);
+        }else{
+          setImageUrl( `http://localhost:4200/images/anonymousUser.svg`)
+        }
+
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+
+  useEffect(() => {
+    if (!localStorage.getItem("user_info")) {
+      navigate("/");
+      return;
+    }
+    // const storageUserId = JSON.parse(localStorage.getItem("user_info")).user.user_id;
+    // setUid(storageUserId);  
+    // const picture = JSON.parse(localStorage.getItem("user_info")).user.user_picture; 
+    // if(picture) setImgUrl(picture)
+    // else setImgUrl(defaultProfil)
+  }, [navigate]);
+
+useEffect(()=>{
+  getProfilePicture()
+})
+
+  const logout = () => {
+    axios({
+      method: "GET",
+      url: `http://localhost:4200/api/auth/logout`,
+      withCredentials: true,
+    })
+      .then((res) => {
+        localStorage.clear();
+        window.location.href = "/";
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
-    <nav className="navbar">
+    <nav  className="navbar">
       <span className="containerLogo"><img src={logo} alt="logo"  /></span>
 
-      <div className="containerItmamNav" >
-        <ul >
-          {uid ?(
-               <li className="nav-item">
-                <NavLink className="nav-link" to="/home" activeClassName="active">
-                    Home
-                </NavLink>
-                <li className="nav-item">
-                <NavLink className="nav-link" to="/profil/:id"activeClassName="active">
-                  Mon profil
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <button className="btn" onClick={handleLogout}>Déconnexion</button>
-              </li>
+      <div className="containerItmamNav"  >
+          {/* {uid ?( */}
+            <div className="nav-item">
+                <span className="nav-item">
+                    <NavLink className="nav-link" to="/home" >
+                    <FontAwesomeIcon icon={faHome}/>
+                    </NavLink>
+                </span>  
+                <span className="nav-item">
+                    <NavLink className="nav-link" to="/profil">
+                      <img src={imageUrl} alt="profiluser" className="avatar" />
+                    </NavLink>
+                </span>
+                <button className="btn"onClick={logout} ><FontAwesomeIcon icon={faSignOut}/></button>
 
-              </li>
+            </div>
           
-          ):(
-            <ul className="ul2">
+          {/* ):( */}
+            {/* <ul className="ul2">
             <li className="nav-item">
-                <NavLink className="nav-link" to="/"activeClassName="active1">
-                    Se connecter
+                <NavLink className="nav-link" to="/">
+                    <FontAwesomeIcon icon={faSignIn}/>
                 </NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link" to="/signup" activeClassName="active">
-                    S'inscrire
+                <NavLink className="nav-link " to="/signup" >
+                    <img src={signup} alt="inscription" className="imginscription" />
                 </NavLink>
             </li>
-            </ul>
-          )}
-
-        </ul>
+            </ul> */}
+          {/* } */}
       </div>
     </nav>
   );

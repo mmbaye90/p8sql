@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../Styles/stylesComp/login.css"
+import HeaderLog from "./HeaderLog";
+import logo from "../../img/logo.png"
 
 const SignInForm = () => {
 
@@ -9,7 +11,6 @@ const SignInForm = () => {
   const [errors, setErrors] = useState({});
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [deactivatedUser, setDeactivatedUser] = useState(false);
 
   const navigate = useNavigate();
 
@@ -19,12 +20,11 @@ const SignInForm = () => {
     axios({
       method: "POST",
       url: `http://localhost:4200/api/auth/login`,
+      withCredentials: true,
       data: {
         user_email: email,
         user_password: password,
       },
-      withCredentials: true,
-
     })
       .then((res) => {
         localStorage.setItem("user_info", JSON.stringify(res.data));
@@ -35,13 +35,14 @@ const SignInForm = () => {
           ...errors,
           message: err.response.data.errorMessage,
         });
-        setDeactivatedUser(true);
       });
   };
 
   
   return (
-    <div className="container-bloc-form">
+    <>
+    <HeaderLog/>
+    <div className="login">
       <div className="login-form">
         <form action="" onSubmit={handleLogin} id="sign-up-form">
           <label htmlFor="email">Email</label>
@@ -65,13 +66,17 @@ const SignInForm = () => {
           <div className="error">{errors.message}</div>
           <br />
           <input type="submit" value="Se connecter" id="validation" />
-          <NavLink to="/signup" className="login-form-end">
-            Pas encore de compte ? Inscrivez-vous
-          </NavLink>
+            <a href="/signup" className="login-form-end" >
+              Pas encore de compte ? Inscrivez-vous
+            </a>
         </form>
       </div>
       <br />
+      <div className="footer">
+        <img src={logo} alt="" className="imgFooter"/>
+      </div>
     </div>
+  </>
   );
 };
 export default SignInForm;

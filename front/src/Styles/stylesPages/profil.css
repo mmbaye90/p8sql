@@ -1,0 +1,28 @@
+.ContainerProfil {
+    margin: 2rem 0;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 13px #555;
+    background: #fff;
+}
+
+.ContainerProfil h1 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.ContainerProfil h2 {
+    margin-bottom: 1rem;
+}
+
+.ContainerProfil .profilTop {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ContainerProfil .profilTop .containerImg {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    box-shadow: 0 1px 7px -1px;
+}

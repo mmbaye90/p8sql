@@ -3,6 +3,7 @@ import axios from "axios";
 import SigninForm from "./SinginForm"
 import "../../Styles/stylesComp/register.css"
 import { NavLink } from "react-router-dom";
+import HeaderLog from "./HeaderLog";
 
 
 
@@ -21,6 +22,7 @@ const SignUpForm = () => {
   const [isNumberOk, setIsNumberOk] = useState(false);
   const [isSpecialOk, setIsSpecialOk] = useState(false);
   const [isMinMaxOk, setIsMinMaxOk] = useState(false);
+  const [uid,setUid]= useState("")
 
 
   // ************************** Les regex *******************************
@@ -127,6 +129,9 @@ const SignUpForm = () => {
         },
       })
         .then((res) => {
+          setUid (JSON.parse(localStorage.getItem("user_info")).user
+          .user_id);
+          console.log(uid);
           console.log(res);
           if (!res.data.errors) {
             setFormSubmit(true);
@@ -138,6 +143,8 @@ const SignUpForm = () => {
 
   return (
     <>
+    {uid? "":<HeaderLog/>}
+    
       {formSubmit ? (
         <>
           <SigninForm />
@@ -147,8 +154,8 @@ const SignUpForm = () => {
         </>
       ) : (
         <>
-          <div className="container-bloc-form">
-            <div className="login-form">
+          <div className="register">
+            <div>
               <form action="" onSubmit={handleRegister} id="sign-up-form">
                 <label htmlFor="email">Email</label>
                 <input

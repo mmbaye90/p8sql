@@ -1,0 +1,8 @@
+.containerHomepage {
+    border: 1px solid orangered;
+    max-width: 859px;
+    margin: auto;
+    border-radius: 2px;
+    box-shadow: 0 1px 7px -1px;
+    margin-top: 0.5rem;
+}

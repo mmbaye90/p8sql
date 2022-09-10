@@ -76,3 +76,13 @@
     height: 53%;
     width: 2rem;
 }
+
+.navbar .contItem {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .contItem li {
+    list-style-type: none;
+    margin-left: 1rem;
+}

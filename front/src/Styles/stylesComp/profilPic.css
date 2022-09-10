@@ -1,0 +1,43 @@
+.uploadPic {
+    margin-top: 1rem;
+    cursor: pointer;
+    display: block;
+    border-radius: 5px;
+    /* width: 10rem; */
+    text-align: center;
+    /* background: orangered; */
+    color: white;
+    /* position: relative; */
+}
+
+.uploadPic input[type="file"] {
+    display: none;
+}
+
+.uploadPic label {
+    padding: 0.7em 1.5em;
+    cursor: pointer;
+    display: block;
+    border-radius: 5px;
+    background: orangered;
+    color: white;
+}
+
+.uploadPic label:hover {
+    background: rgb(233, 131, 95);
+}
+
+.uploadPic input[type="submit"] {
+    padding: 0.5em 2.8em;
+    cursor: pointer;
+    display: block;
+    border-radius: 5px;
+    background: orangered;
+    color: white;
+    border: none;
+    margin-top: -0.7rem;
+}
+
+.uploadPic input[type="submit"]:hover {
+    background: rgb(233, 131, 95);
+}

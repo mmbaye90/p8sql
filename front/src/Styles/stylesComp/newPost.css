@@ -1,0 +1,64 @@
+.postContainer {
+    /* max-width: 40rem; */
+    /* margin-left: 12rem; */
+    /* margin-top: 1rem; */
+    padding: 0.5rem;
+    background: #fff;
+    /* border: 1px solid black; */
+}
+
+.postContainer .imgTitre {
+    display: flex;
+    justify-content: center;
+}
+
+.postContainer .imgPic {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    box-shadow: 0 1px 7px -1px;
+}
+
+.postContainer textarea {
+    width: 50%;
+    height: 48px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
+.postContainer .contTextarea {
+    display: flex;
+    justify-content: center;
+}
+
+.postContainer .contimgPrev {
+    display: flex;
+    justify-content: center;
+}
+
+.postContainer .contimgPrev img {
+    display: block;
+    width: 15%;
+}
+
+.footerForm {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerForm input[type="file"] {
+    opacity: 0;
+}
+
+
+/* .posForm .itemPrev {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+} */

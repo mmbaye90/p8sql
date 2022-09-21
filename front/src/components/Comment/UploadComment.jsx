@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import "../../Styles/stylesComp/uploadComment.css"
 
 const UploadComment = ({post_id,userId}) => {
 
@@ -29,7 +30,7 @@ const UploadComment = ({post_id,userId}) => {
             },
           })
             .then((res) => {
-                console.log(res.data);
+              window.location.reload();
             })
             .catch((err) => {
               console.log(`Echec post commentaire : ${err}`);
@@ -46,10 +47,11 @@ const UploadComment = ({post_id,userId}) => {
           }    
     },[commentMsg.length])
 
+
     return (
         <>
-        <hr className="divider" />
-        <form onSubmit={handleSubmit} id={"form-comment"}>
+        <hr/>
+        <form onSubmit={handleSubmit} className="formcomment">
           <input
             type="text"
             placeholder="Votre commentaire..."
@@ -57,7 +59,7 @@ const UploadComment = ({post_id,userId}) => {
             value={commentMsg}
             id="input-comment"
           />
-            <button type="submit" className="publish-comment-phone">
+            <button type="submit" className="submitComment">
                 <FontAwesomeIcon icon={faPaperPlane} />
             </button>
         </form>

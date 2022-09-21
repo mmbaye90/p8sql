@@ -66,7 +66,7 @@ const SignInForm = () => {
           <div className="error">{errors.message}</div>
           <br />
           <input type="submit" value="Se connecter" id="validation" />
-            <a href="/signup" className="login-form-end" >
+            <a href="/signup" className="redirect" >
               Pas encore de compte ? Inscrivez-vous
             </a>
         </form>

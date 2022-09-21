@@ -1,0 +1,85 @@
+h4 {
+    display: flex;
+    justify-content: center;
+}
+
+.commentaireTexte {
+    text-align: center;
+    margin-top: -1rem;
+}
+
+.ContGlobalComment {
+    display: flex;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-top: 1rem;
+}
+
+.ContGlobalComment .containerimguserProfil {
+    display: flex;
+}
+
+.ContGlobalComment .containerimguserProfil img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    box-shadow: 0 1px 7px -1px;
+    margin-right: 0.5rem;
+}
+
+.ContGlobalComment .containerPseudoDate {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ContGlobalComment .containerPseudoDate .datePubComment {
+    margin-left: 13rem;
+    margin-top: 1rem;
+}
+
+.ContGlobalComment .deleteComment {
+    color: red;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: -10rem;
+    cursor: pointer;
+}
+
+@media all and (max-width: 320px) {
+    .ContGlobalComment {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        margin-top: 1rem;
+    }
+    .ContGlobalComment .containerPseudoDate .datePubComment {
+        margin-left: 0px;
+    }
+}
+
+@media all and (max-width: 375px) {
+    .ContGlobalComment {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        margin-top: 1rem;
+    }
+    .ContGlobalComment .containerPseudoDate .datePubComment {
+        margin-left: 0px;
+    }
+}
+
+@media all and (max-width: 425px) {
+    .ContGlobalComment {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        margin-top: 1rem;
+    }
+    .ContGlobalComment .containerPseudoDate .datePubComment {
+        margin-left: 0px;
+    }
+}

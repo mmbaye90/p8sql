@@ -11,34 +11,10 @@
     width: 5rem;
 }
 
-.navbar img .user {
-    display: block;
-    height: 100%;
-    width: 15rem;
-}
-
 .containerItmamNav {
     display: flex;
-    align-items: center;
-}
-
-.containerItmamNav ul {
-    display: flex;
-    list-style-type: none;
-}
-
-.containerItmamNav ul li {
-    margin: 0.5rem;
-    text-align: center;
-}
-
-.containerItmamNav .ul2 {
-    padding-left: 0.2rem;
-}
-
-.containerItmamNav ul .nav-link {
-    text-decoration: none;
-    color: white;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .containerItmamNav span .nav-link {
@@ -47,8 +23,14 @@
     margin: 0.5rem;
 }
 
-.containerItmamNav ul .nav-link:hover {
-    border-bottom: 3px solid orangered;
+.containerItmamNav span .nav-link .avatar {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    box-shadow: 0 1px 7px -1px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .active {
@@ -62,17 +44,10 @@
     border: none;
     background: red;
     color: white;
-    /* height: 2rem; */
     cursor: pointer;
     border-radius: 0.2rem;
 }
 
 .btn:hover {
     background: rgb(240, 125, 84);
-}
-
-.navbar .nav-item .imginscription {
-    display: block;
-    height: 53%;
-    width: 2rem;
 }

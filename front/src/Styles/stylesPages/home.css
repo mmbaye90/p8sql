@@ -1,8 +1,15 @@
+@media all and (max-width: 320px) {
+    .containerHomepage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 .containerHomepage {
-    border: 1px solid orangered;
-    max-width: 859px;
+    max-width: 588px;
     margin: auto;
     border-radius: 2px;
     box-shadow: 0 1px 7px -1px;
-    margin-top: 0.5rem;
+    margin-top: 2.5rem;
 }

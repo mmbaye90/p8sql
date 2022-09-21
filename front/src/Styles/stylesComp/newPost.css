@@ -1,11 +1,23 @@
-.postContainer {
-    /* max-width: 40rem; */
-    /* margin-left: 12rem; */
-    /* margin-top: 1rem; */
+@media all and (max-width: 320px) {
+    .postContainer textarea {
+        width: 81%;
+        height: 48px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        resize: none;
+    }
+}
+
+
+/* .postContainer {
     padding: 0.5rem;
     background: #fff;
-    /* border: 1px solid black; */
-}
+    border-radius: 5px;
+} */
 
 .postContainer .imgTitre {
     display: flex;
@@ -48,17 +60,39 @@
 
 .footerForm {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .footerForm input[type="file"] {
     opacity: 0;
 }
 
+.footerForm .btns .cancel {
+    display: inline-block;
+    cursor: pointer;
+    color: orangered;
+    border: none;
+    background: none;
+}
 
-/* .posForm .itemPrev {
-    border: 1px solid red;
-    display: flex;
-    flex-direction: column;
-    width: 10rem;
-} */
+.footerForm .btns .sendMsg {
+    display: inline-block;
+    cursor: pointer;
+    color: orangered;
+    border: none;
+    background: none;
+}
+
+.footerForm label {
+    display: inline-block;
+    cursor: pointer;
+    color: orangered;
+}
+
+.footerForm label :hover {
+    color: rgba(250, 143, 104, 0.836);
+}
+
+.footerForm .btns .sendMsg :hover {
+    color: rgba(250, 143, 104, 0.836);
+}

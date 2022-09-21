@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios"
-import UploadComment from '../Comment/UploadComment';
-import Comments from './Comments';
+import axios from "axios";
+import UploadComment from "../Comment/UploadComment";
+import Comments from "./Comments";
+import "../../Styles/stylesComp/cardPost.css";
+import { dateParser } from "../../services/Utils";
 
-const CardPost = ({post,isAdmin}) => {
+const CardPost = ({ post, isAdmin }) => {
   const [isPostUser, setIsPostUser] = useState(false);
   const { post_id, post_user_id } = post;
   const [countLikes, setCountLikes] = useState(null);
   const [isLiked, setIsLiked] = useState(false);
-  const userId = JSON.parse(localStorage.getItem("user_info")).user
-  .user_id;
-
+  const userId = JSON.parse(localStorage.getItem("user_info")).user.user_id;
 
   const navigate = useNavigate();
 
   //********************************************** LES FN *********************************/
+
   const handleProfilPage = () => {
     navigate(`/profil`);
   };
@@ -63,7 +64,6 @@ const CardPost = ({post,isAdmin}) => {
       });
   };
 
-
   const handleLike = () => {
     axios({
       method: "PATCH",
@@ -100,111 +100,97 @@ const CardPost = ({post,isAdmin}) => {
       });
   };
 
-
-
   useEffect(() => {
     if (post.post_user_id === userId || isAdmin) {
       setIsPostUser(true);
     } else {
       setIsPostUser(false);
     }
-  }, [post,isAdmin,userId]);
+  }, [post, isAdmin, userId]);
 
   useEffect(() => {
     handleLikeCount();
     fetchLikes();
-  }, [handleLike,fetchLikes]);
+  }, [handleLike, fetchLikes]);
   return (
     <>
-      <div className="post-container">
-        <div className="post-container-top">
+      <div className="containercard">
+        <div className="containerImgPseudoDate">
           <div
-            className="post-container-top-img-container"
+            className="containerImgPseudo"
             onClick={(e) => navigate(`/profil/${post_user_id}`)}
           >
             <img
               className="imgPic"
-              src={post.user_picture}
+              src={
+                post.user_picture
+                  ? post.user_picture
+                  : "http://localhost:4200/images/anonymousUser.svg"
+              }
               alt="imgeProfil"
             />
+            <div className="containerNomContent">
+              <h3
+                key={`${post.post_user_id}${post.date_creation}`}
+                onClick={handleProfilPage}
+              >
+                {post.user_firstname} {post.user_lastname}
+              </h3>
+            </div>
           </div>
+          <div className="date">{dateParser(post.date_creation)}</div>
+        </div>
+        <div className="containerMsgImgPost" key={`${post.post_user_id}`}>
+          <div className="containerPost">{post.content}</div>
 
-          <div className="post-container-top-infos">
-            <p
-              key={`${post.post_user_id}${post.date_creation}`}
-              className="post-container-top-name"
-              onClick={handleProfilPage}
-            >
-              {post.user_firstname} {post.user_lastname}
-            </p>
+          <div className="containerimgPost">
+            <img src={post.post_imageUrl ? post.post_imageUrl : ""} alt="" />
           </div>
         </div>
-        <div className="post-container-message" key={`${post.post_user_id}`}>
-          {post.content}
+
+        <div className="containerCountlikes">
+          {countLikes === 0 ? (
+            <FontAwesomeIcon icon={faHeart} className="heartNonLiked" />
+          ) : (
+            <FontAwesomeIcon icon={faHeart} className="heartLiked" />
+          )}{" "}
+          {countLikes}
         </div>
-        <div className="container_img_post">
-          <img src={post.post_imageUrl?post.post_imageUrl :""} alt=''/>
-        </div>
-        <div className="post-container-countlikes">
-          <FontAwesomeIcon
-            icon={faThumbsUp}
-            className="post-container-countlikes-icon"
-          />
-          <span className="post-container-countlikes-count">{countLikes}</span>
-        </div>
-        <hr />
-        <div className="post-container-end">
+        <div className="postContainerBtnEnd">
           {isLiked && (
-            <button onClick={handleLike} className="post-container-end__liked">
-              <FontAwesomeIcon
-                icon={faThumbsUp}
-                className="post-container-end__like-i"
-              />
-              <span>J'aime</span>
+            <button onClick={handleLike} className="postLiked">
+              <FontAwesomeIcon icon={faThumbsUp} /> J'aime
             </button>
           )}
           {!isLiked && (
-            <button onClick={handleLike} className="post-container-end__like">
-              <FontAwesomeIcon
-                icon={faThumbsUp}
-                className="post-container-end__like-i"
-              />
-              <span>J'aime</span>
+            <button onClick={handleLike} className="postLiked">
+              <FontAwesomeIcon icon={faThumbsUp} /> J'aime
             </button>
-            
           )}
-          {<div>
-            <UploadComment
-            post_id = {post_id}
-            userId={userId}
-          />
-          <Comments
-            post_id = {post_id}
-            post ={post}
-            userId={userId}
-            isAdmin={isAdmin}
-          />
-          </div>}
+          {}
           {isPostUser && (
             <button
-              className="post-container-end__delete"
+              className="supprimer"
               onClick={() => {
                 handleDelete(post.post_id);
               }}
             >
-              <FontAwesomeIcon icon={faTrashCan} />
-              <span>Supprimer</span>
+              <FontAwesomeIcon icon={faTrashCan} /> Supp Msg
             </button>
           )}
         </div>
-      </div>
-      <div className="post-container-comments">
-        <div className="post-container-comments-users">
+        <div>
+          <Comments
+            post_id={post_id}
+            post={post}
+            userId={userId}
+            isAdmin={isAdmin}
+          />
+          <UploadComment post_id={post_id} userId={userId} />
         </div>
-        <p className="comment-error"></p>
       </div>
     </>
-  );};
-
+  );
+};
 
 export default CardPost;

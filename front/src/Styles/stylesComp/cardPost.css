@@ -1,0 +1,120 @@
+@media all and (max-width: 320px) {
+    .containercard {
+        background-color: #fff;
+        margin-top: 1rem;
+        border-radius: 5px;
+        width: 18rem;
+    }
+    .containercard .containerImgPseudoDate {
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: column
+    }
+    .footerForm {
+        width: 5rem;
+        margin-left: 5rem;
+    }
+}
+
+.containercard {
+    background-color: #fff;
+    margin-top: 1rem;
+    border-radius: 5px;
+}
+
+.containercard .containerImgPseudoDate {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.containercard .containerImgPseudoDate .containerImgPseudo {
+    display: flex;
+}
+
+.containercard .containerImgPseudoDate .date {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.containercard .containerImgPseudoDate .containerImgPseudo img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    box-shadow: 0 1px 7px -1px;
+    margin-right: 0.5rem;
+}
+
+.containercard .containerMsgImgPost {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containercard .containerMsgImgPost .containerPost {
+    margin-bottom: 0.5rem;
+}
+
+.containercard .containerMsgImgPost .containerimgPost img {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+}
+
+.containercard .containerCountlikes {
+    display: flex;
+    justify-content: center;
+}
+
+.containercard .containerCountlikes .heartNonLiked,
+.heartLiked {
+    margin-right: 0.5rem;
+}
+
+.containercard .containerCountlikes .heartLiked {
+    color: green;
+}
+
+.postContainerBtnEnd {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    border: 1px solid rgb(172, 168, 168);
+    height: 1.5rem;
+}
+
+.postContainerBtnEnd .postLiked {
+    cursor: pointer;
+    width: 50%;
+    border-bottom: none;
+    border-top: none;
+    border-left: none;
+    height: 100%;
+    border-right: 1px solid white;
+    background: orangered;
+    color: white;
+}
+
+.postContainerBtnEnd .supprimer {
+    cursor: pointer;
+    width: 50%;
+    border-bottom: none;
+    border-top: none;
+    border-left: none;
+    height: 100%;
+    border-right: 1px solid white;
+    background: orangered;
+    color: white;
+}
+
+.postContainerBtnEnd .supprimer:hover {
+    background-color: rgb(243, 109, 61);
+}
+
+.postContainerBtnEnd .postLiked:hover {
+    background-color: rgb(243, 109, 61);
+}

@@ -1,0 +1,23 @@
+.formcomment {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formcomment input {
+    width: 50%;
+    height: 35px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+    color: black;
+}
+
+.formcomment .submitComment {
+    display: block;
+    height: 35px;
+}

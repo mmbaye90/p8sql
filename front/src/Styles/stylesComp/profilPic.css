@@ -1,43 +1,48 @@
-.uploadPic {
-    margin-top: 1rem;
-    cursor: pointer;
+.containerImg img {
     display: block;
-    border-radius: 5px;
-    /* width: 10rem; */
-    text-align: center;
-    /* background: orangered; */
-    color: white;
-    /* position: relative; */
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    box-shadow: 0 1px 7px -1px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
 
-.uploadPic input[type="file"] {
+.labelModif label {
+    margin-top: 1rem;
+    margin-left: 0.8rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    height: 2rem;
+    border-radius: 5px;
+    width: 8rem;
+    justify-content: center;
+    background: orangered;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.labelModif label:hover,
+.form input[type="submit"] {
+    background: rgb(233, 131, 95);
+}
+
+.labelModif input[type="file"] {
     display: none;
 }
 
-.uploadPic label {
-    padding: 0.7em 1.5em;
+form input[type="submit"] {
+    margin-left: 0.8rem;
     cursor: pointer;
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    height: 2rem;
     border-radius: 5px;
+    width: 8rem;
+    justify-content: center;
     background: orangered;
     color: white;
-}
-
-.uploadPic label:hover {
-    background: rgb(233, 131, 95);
-}
-
-.uploadPic input[type="submit"] {
-    padding: 0.5em 2.8em;
-    cursor: pointer;
-    display: block;
-    border-radius: 5px;
-    background: orangered;
-    color: white;
+    margin-bottom: 0.5rem;
     border: none;
-    margin-top: -0.7rem;
-}
-
-.uploadPic input[type="submit"]:hover {
-    background: rgb(233, 131, 95);
 }

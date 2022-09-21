@@ -86,7 +86,6 @@ const Home = () => {
                 // allPosts={allPosts}
                 userId={userId}
                 getProfilePicture={getProfilePicture}
-                imageUrl={imageUrl}
                 // fetchAllPosts={fetchAllPosts}
                 isAdmin={isAdmin}
                 />

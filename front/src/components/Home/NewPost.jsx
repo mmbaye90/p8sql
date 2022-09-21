@@ -1,6 +1,5 @@
 import {
   faBackward,
-  faCancel,
   faPaperPlane,
   faUpload,
 } from "@fortawesome/free-solid-svg-icons";
@@ -114,13 +113,6 @@ const NewPost = () => {
         </div>
 
         <br />
-        {/* {msg ? (
-          <div className="itemPrev">
-            <p>{msg}</p>
-          </div>
-        ) : (
-          ""
-        )} */}
         <div className="contimgPrev">
           {file ? <img src={URL.createObjectURL(file)} alt="" className="imgPrev"/> : ""}
         </div>
@@ -138,8 +130,8 @@ const NewPost = () => {
           />
           <div className="btns">
             {msg || file ? (
-              <button className="cancel" onClick={cancelPost}>
-                <FontAwesomeIcon icon={faBackward} />
+              <button className="cancel" onClick={cancelPost} >
+                <FontAwesomeIcon icon={faBackward}/>
               </button>
             ) : null}
 

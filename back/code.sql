@@ -1,6 +1,3 @@
-/*Certaine requetes sont faites ,histoire de revoir quelques commande SQL*/
-
-
 
 -- CREATION TABLE USERS                       ATTention aux "" et ``  pour les requêtes dans les ctrls
 CREATE TABLE IF NOT EXISTS users (
@@ -20,12 +17,6 @@ CREATE TABLE IF NOT EXISTS users (
   UNIQUE (user_email)
 )ENGINE=InnoDB;
 
-ALTER TABLE users
-MODIFY updatedAt  TIMESTAMP;
-MODIFY createdAt  TIMESTAMP;
-
-
-DROP TABLE users;
 
 -- CREATION TABLE POSTs
 CREATE TABLE IF NOT EXISTS posts (
@@ -40,8 +31,6 @@ CREATE TABLE IF NOT EXISTS posts (
   CONSTRAINT fk_Posts_Users_id  FOREIGN KEY (post_user_id) REFERENCES users (user_id) ON DELETE CASCADE
 )ENGINE=InnoDB;
 
-ALTER TABLE posts
-CHANGE createdAt date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
 
 
 -- CREATION TABLE LIKES

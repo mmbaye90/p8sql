@@ -49,7 +49,7 @@ const UploadComment = ({post_id,userId}) => {
             },
           })
             .then((res) => {
-              // window.location.reload();
+              setCommentMsg("")
             })
             .catch((err) => {
               console.log(`Echec post commentaire : ${err}`);

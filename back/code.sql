@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS posts (
   post_id int NOT NULL AUTO_INCREMENT,
   post_user_id int NOT NULL,
-  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   content TEXT NOT NULL,
   likes varchar(255)  DEFAULT NULL,
   active tinyint(1) NOT NULL DEFAULT 1,

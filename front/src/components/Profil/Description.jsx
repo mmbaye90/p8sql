@@ -21,6 +21,7 @@ const Description = ({ fetchProfilById, email, bio }) => {
     })
       .then((res) => {
         fetchProfilById();
+
         setUpdateForm(false);
       })
       .catch((err) => {

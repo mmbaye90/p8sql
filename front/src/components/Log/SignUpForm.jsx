@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import SigninForm from "./SinginForm"
-import "../../Styles/stylesComp/register.css"
+import SigninForm from "./SinginForm";
+import "../../Styles/stylesComp/register.css";
 import { NavLink } from "react-router-dom";
 import HeaderLog from "./HeaderLog";
 
-
-
 const SignUpForm = () => {
-
-
   // ************************** Lees States ***************************
   const [errors, setErrors] = useState({});
   const [formSubmit, setFormSubmit] = useState(false);
@@ -22,20 +18,21 @@ const SignUpForm = () => {
   const [isNumberOk, setIsNumberOk] = useState(false);
   const [isSpecialOk, setIsSpecialOk] = useState(false);
   const [isMinMaxOk, setIsMinMaxOk] = useState(false);
-  const [uid,setUid]= useState("")
-
+  const [uid, setUid] = useState("");
 
   // ************************** Les regex *******************************
-  const regexEmail =/^(([^<>()[\]\\.,;:\s@\\"]+(\.[^<>()[\]\\.,;:\s@\\"]+)*)|(\\".+\\"))@(([^<>()[\]\\.,;:\s@\\"]+\.)+[^<>()[\]\\.,;:\s@\\"]{2,})$/i;
-  const regexName =/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
-  const regexPassword =/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&éè])[A-Za-z\d@$!%*#?&éè]{8,32}$/; // Minimum 8 caractères, au moins une lettre, un chiffre et un caractère spécial
+  const regexEmail =
+    /^(([^<>()[\]\\.,;:\s@\\"]+(\.[^<>()[\]\\.,;:\s@\\"]+)*)|(\\".+\\"))@(([^<>()[\]\\.,;:\s@\\"]+\.)+[^<>()[\]\\.,;:\s@\\"]{2,})$/i;
+  const regexName =
+    /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
+  const regexPassword =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&éè])[A-Za-z\d@$!%*#?&éè]{8,32}$/; // Minimum 8 caractères, au moins une lettre, un chiffre et un caractère spécial
   const regexLetter = /[a-zA-Z]/g; // Check si le string contient au moins une lettre
   const regexNum = /\d/; // Check s'il y a un chiffre
   const regexSpecial = /[@$!%*#?&éè]/;
   const regexMinMax = /^.{8,32}$/; // Check si le mdp contient minimum 8 caractères et maximum 32
 
-
-// ******************************* Les fonctions pour le formulaire ***********************************
+  // ******************************* Les fonctions pour le formulaire ***********************************
   const handleEmailInput = (e) => {
     setEmail(e.target.value);
     if (regexEmail.test(e.target.value) || e.target.value.length === 0) {
@@ -94,7 +91,7 @@ const SignUpForm = () => {
     }
   };
 
-   const handleControlPasswordInput = (e) => {
+  const handleControlPasswordInput = (e) => {
     setControlPassword(e.target.value);
     if (password === e.target.value) {
       setErrors({ ...errors, passwordConfirm: "" });
@@ -129,8 +126,7 @@ const SignUpForm = () => {
         },
       })
         .then((res) => {
-          setUid (JSON.parse(localStorage.getItem("user_info")).user
-          .user_id);
+          setUid(JSON.parse(localStorage.getItem("user_info")).user.user_id);
           console.log(uid);
           console.log(res);
           if (!res.data.errors) {
@@ -143,8 +139,8 @@ const SignUpForm = () => {
 
   return (
     <>
-    {uid? "":<HeaderLog/>}
-    
+      {uid ? "" : <HeaderLog />}
+
       {formSubmit ? (
         <>
           <SigninForm />
@@ -235,7 +231,7 @@ const SignUpForm = () => {
                   {errors.passwordConfirm}
                 </div>
                 <br />
-                <input type="submit" value="Inscription" id="validation"/>
+                <input type="submit" value="Inscription" id="validation" />
                 <NavLink to={"/"} className="signup-form-end">
                   J'ai déjà un compte
                 </NavLink>
@@ -245,6 +241,7 @@ const SignUpForm = () => {
         </>
       )}
     </>
-  );    };
+  );
+};
 
 export default SignUpForm;

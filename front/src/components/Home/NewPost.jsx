@@ -5,7 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "../../Styles/stylesComp/newPost.css";
@@ -100,23 +100,26 @@ const NewPost = () => {
         <div className="imgTitre">
           <NavLink to="/profil">
             {user_id && <img src={pictureUser} alt="" className="imgPic" />}
-            
           </NavLink>
         </div>
         <br />
         <div className="contTextarea">
-        <textarea
-          name="msg"
-          id="msg"
-          placeholder="exprimez-vous"
-          onChange={(e) => setMsg(e.target.value)}
-          value={msg}
-        />          
+          <textarea
+            name="msg"
+            id="msg"
+            placeholder="exprimez-vous"
+            onChange={(e) => setMsg(e.target.value)}
+            value={msg}
+          />
         </div>
 
         <br />
         <div className="contimgPrev">
-          {file ? <img src={URL.createObjectURL(file)} alt="" className="imgPrev"/> : ""}
+          {file ? (
+            <img src={URL.createObjectURL(file)} alt="" className="imgPrev" />
+          ) : (
+            ""
+          )}
         </div>
         <div className="footerForm">
           <label htmlFor="attachment">
@@ -132,8 +135,8 @@ const NewPost = () => {
           />
           <div className="btns">
             {msg || file ? (
-              <button className="cancel" onClick={cancelPost} >
-                <FontAwesomeIcon icon={faBackward}/>
+              <button className="cancel" onClick={cancelPost}>
+                <FontAwesomeIcon icon={faBackward} />
               </button>
             ) : null}
 

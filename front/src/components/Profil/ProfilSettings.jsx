@@ -92,18 +92,15 @@ const ProfilSettings = () => {
 
   return (
     <div className="containerGlobal">
-      <button
-        onClick={() => setIsChangingPass(true)}
-      >
+      <button onClick={() => setIsChangingPass(true)}>
         Changer le mot de passe
       </button>
       {!isChangingPass ? (
-        <>
-        </>
+        <></>
       ) : (
-        <div >
+        <div>
           <form action="" onSubmit={handleChangePassword}>
-            <label >Mot de passe actuel</label>
+            <label>Mot de passe actuel</label>
             <input
               type="password"
               name="password"
@@ -148,21 +145,17 @@ const ProfilSettings = () => {
               onChange={(e) => setControlPassword(e.target.value)}
             />
             <p className="form-container-error">{errors.passwordConfirm}</p>
-            <button
-              type="submit"
-              value="Changer"
-            >
+            <button type="submit" value="Changer">
               Changer
             </button>
-            <button onClick={() => setIsChangingPass(false)}>
-              Annuler
-            </button>
+            <button onClick={() => setIsChangingPass(false)}>Annuler</button>
           </form>
         </div>
       )}
-      {passwordChanged ? (
-        `${alert("Mot de passe enregistré")} ${window.location.href = "/home"} `
-      ):""}
+      {passwordChanged
+        ? `${alert("Mot de passe enregistré")} ${(window.location.href =
+            "/home")} `
+        : ""}
     </div>
   );
 };

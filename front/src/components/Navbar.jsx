@@ -72,19 +72,19 @@ const Navbar = () => {
       </span>
 
       <div className="containerItmamNav">
-          <span className="nav-item">
-            <NavLink className="nav-link" to="/home">
-              <FontAwesomeIcon icon={faHome} />
-            </NavLink>
-          </span>
-          <span className="nav-item">
-            <NavLink className="nav-link" to="/profil">
-              <img src={imageUrl} alt="profiluser" className="avatar" />
-            </NavLink>
-          </span>
-          <button className="btn" onClick={logout}>
-            <FontAwesomeIcon icon={faSignOut} />
-          </button>
+        <span className="nav-item">
+          <NavLink className="nav-link" to="/home">
+            <FontAwesomeIcon icon={faHome} />
+          </NavLink>
+        </span>
+        <span className="nav-item">
+          <NavLink className="nav-link" to="/profil">
+            <img src={imageUrl} alt="profiluser" className="avatar" />
+          </NavLink>
+        </span>
+        <button className="btn" onClick={logout}>
+          <FontAwesomeIcon icon={faSignOut} />
+        </button>
       </div>
     </nav>
   );

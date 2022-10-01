@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../../Styles/stylesComp/delete.css"
+import "../../Styles/stylesComp/delete.css";
 
 const DeleteProfil = () => {
   const [handleDelete, setHandleDelete] = useState(false);
@@ -38,19 +38,15 @@ const DeleteProfil = () => {
 
   return (
     <div className="container_delete">
-        <button
-          onClick={handleDeleteProfile}
-        >
-          Supprimer votre compte
-        </button>
+      <button onClick={handleDeleteProfile}>Supprimer votre compte</button>
       {handleDelete && (
-          <div className="deleteMessageBox">
-            <p>êtes-vous sûr de supprimer votre compte définitivement ?</p>
-            <div>
-              <button onClick={handleDeleteAccount}>Oui</button>
-              <button onClick={() => setHandleDelete(false)}>Non</button>
-            </div>
+        <div className="deleteMessageBox">
+          <p>êtes-vous sûr de supprimer votre compte définitivement ?</p>
+          <div>
+            <button onClick={handleDeleteAccount}>Oui</button>
+            <button onClick={() => setHandleDelete(false)}>Non</button>
           </div>
+        </div>
       )}
     </div>
   );

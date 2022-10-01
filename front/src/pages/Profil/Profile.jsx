@@ -111,12 +111,11 @@ const Profile = () => {
         <hr />
         <div className="containerDeleteChangePw">
           <div className="changePw">
-          <ProfilSettings />
+            <ProfilSettings />
           </div>
           <div className="delete">
-          <DeleteProfil />
+            <DeleteProfil />
           </div>
-          
         </div>
       </section>
     </>

@@ -71,28 +71,29 @@ const ProfilPicture = ({
   }, [file]);
 
   return (
-    <form action='' onSubmit={uploadPicture} > 
+    <form action="" onSubmit={uploadPicture}>
       <div className="containerImg">
-        {file?<img className="userPicture" src={URL.createObjectURL(file)} alt="" />:<img src={imageUrl} alt=""/>}
+        {file ? (
+          <img className="userPicture" src={URL.createObjectURL(file)} alt="" />
+        ) : (
+          <img src={imageUrl} alt="" />
+        )}
       </div>
       <div className="labelModif">
-          <label  htmlFor='avatar' onClick={handleUploadPic}> Modifier photo </label>
-          <input
-            type="file"
-            id="profil_image"
-            ref={inputFile}
-            accept="image/png, image/jpeg"
-            name="profil_image"
-            onChange={handleFileChange}
-          />
+        <label htmlFor="avatar" onClick={handleUploadPic}>
+          {" "}
+          Modifier photo{" "}
+        </label>
+        <input
+          type="file"
+          id="profil_image"
+          ref={inputFile}
+          accept="image/png, image/jpeg"
+          name="profil_image"
+          onChange={handleFileChange}
+        />
       </div>
-          {isFile ? (
-            <input  type="submit" value="envoyer"/>
-          ) : (
-            <></>
-          )}
-        {/* </> */}
-      {/* )} */}
+      {isFile ? <input type="submit" value="envoyer" /> : <></>}
     </form>
   );
 };

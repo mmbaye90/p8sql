@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import signup from "../../img/signup.png";
 import "../../Styles/stylesComp/login.css";
-import HeaderLog from "./HeaderLog";
 import logo from "../../img/logo.png";
+// import HeaderLogLogin from "./HeaderLogLogin";
 
 const SignInForm = () => {
   //Les states
@@ -26,7 +27,7 @@ const SignInForm = () => {
       },
     })
       .then((res) => {
-        localStorage.setItem("user_info", JSON.stringify(res.data));
+        window.localStorage.setItem("user_info", JSON.stringify(res.data));
         navigate("/home");
       })
       .catch((err) => {
@@ -39,10 +40,18 @@ const SignInForm = () => {
 
   return (
     <>
-      <HeaderLog />
+      {/* <HeaderLogLogin /> */}
       <div className="login">
+
         <div className="login-form">
           <form action="" onSubmit={handleLogin} id="sign-up-form">
+          <div className="redirectLogin">
+              <NavLink to="/" className="redirect">
+                <span>Pas encore de compte ?</span>
+                <img src={signup} alt="inscription" className="imginscription" />
+              </NavLink>
+          </div>
+
             <label htmlFor="email">Email</label>
             <input
               type="text"
@@ -64,9 +73,6 @@ const SignInForm = () => {
             <div className="error">{errors.message}</div>
             <br />
             <input type="submit" value="Se connecter" id="validation" />
-            <a href="/signup" className="redirect">
-              Pas encore de compte ? Inscrivez-vous
-            </a>
           </form>
         </div>
         <br />

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { dateParser } from "../../services/Utils";
 import "../../Styles/stylesComp/comment.css";
 
-const Comment = ({ allCommentaire, post, isAdmin, userId }) => {
+const Comment = ({ allCommentaire, post, isAdmin, userId,fetchAllComments}) => {
   // console.log(allCommentaire.author_id);
   const [isUserOrAdmin, setIsUserOrAdmin] = useState(false);
   const id = allCommentaire.id;
@@ -22,7 +22,7 @@ const Comment = ({ allCommentaire, post, isAdmin, userId }) => {
       //   },
     })
       .then((res) => {
-        // if (res.status === 200) document.location.reload();
+        fetchAllComments()
       })
       .catch((err) => {
         console.log(`Echec suppression de commentaire : ${err}`);

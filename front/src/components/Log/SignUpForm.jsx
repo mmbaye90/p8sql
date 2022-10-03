@@ -18,7 +18,7 @@ const SignUpForm = () => {
   const [isNumberOk, setIsNumberOk] = useState(false);
   const [isSpecialOk, setIsSpecialOk] = useState(false);
   const [isMinMaxOk, setIsMinMaxOk] = useState(false);
-  const [uid, setUid] = useState("");
+  // const [uid, setUid] = useState("");
 
   // ************************** Les regex *******************************
   const regexEmail =
@@ -126,9 +126,7 @@ const SignUpForm = () => {
         },
       })
         .then((res) => {
-          setUid(JSON.parse(localStorage.getItem("user_info")).user.user_id);
-          console.log(uid);
-          console.log(res);
+          // setUid(JSON.parse(localStorage.getItem("user_info")).user.user_id);
           if (!res.data.errors) {
             setFormSubmit(true);
           }
@@ -139,14 +137,14 @@ const SignUpForm = () => {
 
   return (
     <>
-      {uid ? "" : <HeaderLog />}
+      <HeaderLog />
 
       {formSubmit ? (
         <>
           <SigninForm />
-          <h4 className="success">
+          <div className="success">
             Inscription réussie, veuillez vous connecter
-          </h4>
+          </div>
         </>
       ) : (
         <>
@@ -232,7 +230,7 @@ const SignUpForm = () => {
                 </div>
                 <br />
                 <input type="submit" value="Inscription" id="validation" />
-                <NavLink to={"/"} className="signup-form-end">
+                <NavLink to={"/login"} className="signup-form-end">
                   J'ai déjà un compte
                 </NavLink>
               </form>

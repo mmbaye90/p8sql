@@ -8,3 +8,13 @@
     color: #18dcff;
     height: 100vh;
 } */
+
+.success {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    color: rgb(14, 233, 14);
+    height: 2rem;
+    right: 41rem;
+    top: 101px;
+}

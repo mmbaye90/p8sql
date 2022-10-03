@@ -84,5 +84,9 @@
 
 .navbar .contItem li {
     list-style-type: none;
-    margin-left: 1rem;
+    font-size: 2rem;
+}
+
+.navbar .contItem li svg {
+    color: orangered;
 }

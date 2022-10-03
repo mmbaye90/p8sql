@@ -63,12 +63,14 @@ const Home = () => {
     if (admin === 1) {
       setIsAdmin(true);
     }
-    // fetchAllPosts()
+    fetchAllPosts()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
-  useEffect(() => {
+  // useEffect(() => {
     fetchAllPosts();
-  });
+    
+  // });
 
   return (
     <>
@@ -76,7 +78,7 @@ const Home = () => {
       <div className="containerHomepage">
         <div>
           <NewPost
-          // imageUrl={imageUrl}
+          fetchAllPosts={fetchAllPosts} 
           />
         </div>
         <div>
@@ -84,6 +86,7 @@ const Home = () => {
             allPosts={allPosts}
             userId={userId}
             // getProfilePicture={getProfilePicture}
+            fetchAllPosts={fetchAllPosts}
             isAdmin={isAdmin}
           />
         </div>

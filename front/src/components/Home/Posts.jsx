@@ -5,7 +5,7 @@ import CardPost from "./CardPost";
 // import axios from "axios"
 import { useNavigate } from "react-router-dom";
 
-const Posts = ({ imageUrl, allPosts }) => {
+const Posts = ({ imageUrl, allPosts,fetchAllPosts}) => {
   const [isAdmin, setIsAdmin] = useState(false);
   // const [allPosts, setAllPosts] = useState([]);
   const [userId, setUserId] = useState("");
@@ -51,7 +51,12 @@ const Posts = ({ imageUrl, allPosts }) => {
     <div className="key-posts">
       {allPosts
         ? allPosts.map((post, pos) => {
-            return <CardPost post={post} key={pos} isAdmin={isAdmin} />;
+            return <CardPost 
+            post={post} 
+            key={pos} 
+            isAdmin={isAdmin}
+            fetchAllPosts ={fetchAllPosts}
+            />;
           })
         : null}
     </div>

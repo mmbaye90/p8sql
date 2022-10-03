@@ -44,11 +44,12 @@ const Navbar = () => {
     // const picture = JSON.parse(localStorage.getItem("user_info")).user.user_picture;
     // if(picture) setImgUrl(picture)
     // else setImgUrl(defaultProfil)
-  }, [navigate]);
+    getProfilePicture()
+  },);
 
-  useEffect(() => {
-    getProfilePicture();
-  });
+  // useEffect(() => {
+  //   getProfilePicture();
+  // });
 
   const logout = () => {
     axios({

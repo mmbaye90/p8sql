@@ -4,18 +4,8 @@ const app = express();
 const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const path = require("path");
-const cors = require("cors");
-
 // Cors (need to create a config file for better lisibility)
 app.use((req, res, next) => {
-    // const corsWhitelist = ["http://localhost:3000", "http://localhost:4200"];
-    // if (corsWhitelist.indexOf(req.headers.origin) !== -1) {
-    //     res.header("Access-Control-Allow-Origin", req.headers.origin);
-    //     res.header(
-    //         "Access-Control-Allow-Headers",
-    //         "Origin, X-Requested-With, Content-Type, Accept,Authorization"
-    //     );
-    // }
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
     res.setHeader(
         "Access-Control-Allow-Headers",
@@ -23,7 +13,7 @@ app.use((req, res, next) => {
     );
     res.setHeader(
         "Access-Control-Allow-Methods",
-        "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+        "GET, POST, PUT, DELETE, PATCH, HEAD, OPTION"
     );
     res.setHeader("Access-Control-Allow-Credentials", "true");
     // res.setHeader("credentials: true, origin: true");
@@ -31,7 +21,7 @@ app.use((req, res, next) => {
     next();
 });
 // Middlewares always executed
-// app.use(helmet());
+app.use(helmet());
 // app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(express.json());
 app.use(cookieParser());

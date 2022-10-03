@@ -10,7 +10,7 @@ import { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "../../Styles/stylesComp/newPost.css";
 
-const NewPost = () => {
+const NewPost = ({fetchAllPosts}) => {
   // console.log(imageUrl);
   const [msg, setMsg] = useState("");
   const [pictureUser, setPictureUser] = useState();
@@ -81,6 +81,7 @@ const NewPost = () => {
         // }
         // getProfilePicture()
         cancelPost();
+        fetchAllPosts()
       })
       .catch((err) => {
         console.log(err);

@@ -21,7 +21,7 @@ exports.signup = async(req, res) => {
             if (!result) {
                 res.status(200).json({ errors: "Email déjà enregistré" });
             } else {
-                res.status(201).json({ message: "User created !" });
+                res.status(201).json(result);
             }
         });
     } catch (err) {
@@ -52,10 +52,10 @@ exports.login = (req, res) => {
                 const match = await bcrypt.compare(clearPassword, hashedPassword);
                 if (match) {
                     // If match, generate JWT token
-                    const maxAge = 1 * (24 * 60 * 60 * 1000);
+                    // const maxAge = 1 * (24 * 60 * 60 * 1000);
                     const token = jwt.sign({ user_id, user_firstname, user_lastname, admin },
                         process.env.SECRET_TOKEN, {
-                            expiresIn: maxAge,
+                            expiresIn: "24h",
                         }
                     );
                     // remove the password key of the response

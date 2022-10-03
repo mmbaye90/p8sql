@@ -3,6 +3,6 @@ module.exports.corsOptions = {
     credentials: true,
     allowedHeaders: ["sessionId", "Content-Type"],
     exposedHeaders: ["sessionId"],
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTION",
     preflightContinue: false,
 };

@@ -9,7 +9,7 @@ import Comments from "./Comments";
 import "../../Styles/stylesComp/cardPost.css";
 import { dateParser } from "../../services/Utils";
 
-const CardPost = ({ post, isAdmin,fetchAllPosts}) => {
+const CardPost = ({ post, isAdmin,getAllPost}) => {
   const [isPostUser, setIsPostUser] = useState(false);
   const { post_id, post_user_id } = post;
   const [countLikes, setCountLikes] = useState(null);
@@ -112,7 +112,7 @@ const CardPost = ({ post, isAdmin,fetchAllPosts}) => {
       },
     })
       .then((res) => {
-        fetchAllPosts();
+        getAllPost();
       })
       .catch((err) => {
         console.log(`Echec suppression de post : ${err}`);

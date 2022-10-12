@@ -49,6 +49,7 @@ const Home = () => {
         console.log(err);
       });
   };
+  const getAllPost =  fetchAllPosts();
 
   //********************************************  LES EFFETS  *******************************************/
   useEffect(() => {
@@ -68,7 +69,6 @@ const Home = () => {
   }, [navigate]);
 
   // useEffect(() => {
-    fetchAllPosts();
     
   // });
 
@@ -78,7 +78,7 @@ const Home = () => {
       <div className="containerHomepage">
         <div>
           <NewPost
-          fetchAllPosts={fetchAllPosts} 
+          getAllPost={getAllPost} 
           />
         </div>
         <div>
@@ -86,7 +86,7 @@ const Home = () => {
             allPosts={allPosts}
             userId={userId}
             // getProfilePicture={getProfilePicture}
-            fetchAllPosts={fetchAllPosts}
+            getAllPost={getAllPost}
             isAdmin={isAdmin}
           />
         </div>

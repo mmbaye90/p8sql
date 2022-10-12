@@ -10,7 +10,7 @@ import { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "../../Styles/stylesComp/newPost.css";
 
-const NewPost = ({fetchAllPosts}) => {
+const NewPost = ({getAllPost}) => {
   // console.log(imageUrl);
   const [msg, setMsg] = useState("");
   const [pictureUser, setPictureUser] = useState();
@@ -74,14 +74,8 @@ const NewPost = ({fetchAllPosts}) => {
       withCredentials: true,
     })
       .then((res) => {
-        // if(res.data[0]){
-        //   setPictureUser(res.data[0]);
-        // }else{
-        //   setPictureUser( `http://localhost:4200/images/anonymousUser.svg`)
-        // }
-        // getProfilePicture()
         cancelPost();
-        fetchAllPosts()
+        getAllPost()
       })
       .catch((err) => {
         console.log(err);

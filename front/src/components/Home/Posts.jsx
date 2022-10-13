@@ -5,7 +5,7 @@ import CardPost from "./CardPost";
 // import axios from "axios"
 import { useNavigate } from "react-router-dom";
 
-const Posts = ({ imageUrl, allPosts,getAllPost}) => {
+const Posts = ({ allPosts,fetchAllPosts}) => {
   const [isAdmin, setIsAdmin] = useState(false);
   // const [allPosts, setAllPosts] = useState([]);
   const [userId, setUserId] = useState("");
@@ -37,6 +37,7 @@ const Posts = ({ imageUrl, allPosts,getAllPost}) => {
       navigate("/login");
       return;
     }
+    
     const storageUserId = JSON.parse(localStorage.getItem("user_info")).user
       .user_id;
     const admin = JSON.parse(localStorage.getItem("user_info")).user.admin;
@@ -55,7 +56,7 @@ const Posts = ({ imageUrl, allPosts,getAllPost}) => {
             post={post} 
             key={pos} 
             isAdmin={isAdmin}
-            getAllPost ={getAllPost}
+            fetchAllPosts ={fetchAllPosts}
             />;
           })
         : null}

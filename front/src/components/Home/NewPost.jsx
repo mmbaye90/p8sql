@@ -10,7 +10,7 @@ import { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "../../Styles/stylesComp/newPost.css";
 
-const NewPost = ({getAllPost}) => {
+const NewPost = ({fetchAllPosts}) => {
   // console.log(imageUrl);
   const [msg, setMsg] = useState("");
   const [pictureUser, setPictureUser] = useState();
@@ -61,12 +61,6 @@ const NewPost = ({getAllPost}) => {
     data.append("userId", user_id);
     data.append("content", msg);
     data.append("attachment", file);
-    // const post ={
-    //     post_user_id:user_id,
-    //     content:msg,
-    //     post_imageUrl:{"attachment":file}
-    // }
-    // console.log(post);
     axios({
       method: "POST",
       url: `http://localhost:4200/api/post`,
@@ -75,17 +69,17 @@ const NewPost = ({getAllPost}) => {
     })
       .then((res) => {
         cancelPost();
-        getAllPost()
+        fetchAllPosts()
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
   //************************************** LES EFFETS ******************************/
   useEffect(() => {
     if (user_id) {
       getProfilePicture();
+      
     }
   });
 

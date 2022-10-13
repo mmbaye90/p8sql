@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Comment from "../Comment/Comment";
 
 const Comments = ({ post_id, userId, post, isAdmin,allcomments,fetchAllComments }) => {
-  // const [allcomments, setAllcomments] = useState([]);
-  useEffect(() => {
-    fetchAllComments();
-  });
 
   return (
     <div className="comments">

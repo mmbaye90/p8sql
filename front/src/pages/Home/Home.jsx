@@ -10,28 +10,24 @@ const Home = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [allPosts, setAllPosts] = useState([]);
   const [userId, setUserId] = useState("");
-  // const [imageUrl,setImageUrl] = useState(null)
   const navigate = useNavigate();
 
   //*************************************************** LES FONCTIONS **********************************/
-  // const getProfilePicture = () => {
-  //   axios({
-  //     method: "GET",
-  //     url: `http://localhost:4200/api/user/${userId}`,
-  //     withCredentials: true,
-  //   })
-  //     .then((res) => {
-  //         if(res.data[0].user_picture){
-  //           setImageUrl(res.data[0].user_picture);
-  //         }else{
-  //           setImageUrl( `http://localhost:4200/images/anonymousUser.svg`)
-  //         }
-
+  // useEffect(()=>{
+  //   const fetchData = async ()=>{
+  //     const result = await axios({
+  //       method: "GET",
+  //       url: `http://localhost:4200/api/post`,
+  //       withCredentials: true,
+  //             data: {
+  //       user_id: userId,
+  //     },
+  
   //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+  //     setAllPosts(result.data)
+  //   }
+  //   fetchData()
+  // },[userId])
 
   const fetchAllPosts = () => {
     axios({
@@ -49,8 +45,10 @@ const Home = () => {
         console.log(err);
       });
   };
-  const getAllPost =  fetchAllPosts();
-
+useEffect(()=>{
+  fetchAllPosts()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+},[userId])
   //********************************************  LES EFFETS  *******************************************/
   useEffect(() => {
     if (!localStorage.getItem("user_info")) {
@@ -64,11 +62,12 @@ const Home = () => {
     if (admin === 1) {
       setIsAdmin(true);
     }
-    fetchAllPosts()
+    // fetchAllPosts()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
   // useEffect(() => {
+    // fetchAllPosts();
     
   // });
 
@@ -78,7 +77,7 @@ const Home = () => {
       <div className="containerHomepage">
         <div>
           <NewPost
-          getAllPost={getAllPost} 
+          fetchAllPosts={fetchAllPosts} 
           />
         </div>
         <div>
@@ -86,7 +85,7 @@ const Home = () => {
             allPosts={allPosts}
             userId={userId}
             // getProfilePicture={getProfilePicture}
-            getAllPost={getAllPost}
+            fetchAllPosts={fetchAllPosts}
             isAdmin={isAdmin}
           />
         </div>

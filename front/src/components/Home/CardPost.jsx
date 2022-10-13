@@ -9,7 +9,7 @@ import Comments from "./Comments";
 import "../../Styles/stylesComp/cardPost.css";
 import { dateParser } from "../../services/Utils";
 
-const CardPost = ({ post, isAdmin,getAllPost}) => {
+const CardPost = ({ post, isAdmin,fetchAllPosts}) => {
   const [isPostUser, setIsPostUser] = useState(false);
   const { post_id, post_user_id } = post;
   const [countLikes, setCountLikes] = useState(null);
@@ -54,6 +54,7 @@ const CardPost = ({ post, isAdmin,getAllPost}) => {
       },
     })
       .then((res) => {
+        fetchAllPosts()
         if (res.data[0]) {
           setIsLiked(true);
         } else {
@@ -64,7 +65,10 @@ const CardPost = ({ post, isAdmin,getAllPost}) => {
         console.log(err);
       });
   };
-
+useEffect(()=>{
+  fetchLikes()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+},[])
   const handleLikeCount = () => {
     axios({
       method: "POST",
@@ -77,6 +81,7 @@ const CardPost = ({ post, isAdmin,getAllPost}) => {
     })
       .then((res) => {
         setCountLikes(res.data[0].total);
+        fetchAllPosts()
       })
       .catch((err) => {
         console.log(err);
@@ -95,6 +100,7 @@ const CardPost = ({ post, isAdmin,getAllPost}) => {
     })
       .then((res) => {
         handleLikeCount();
+        fetchAllPosts()
       })
       .catch((err) => {
         console.log(`Echec like post : ${err}`);
@@ -112,7 +118,7 @@ const CardPost = ({ post, isAdmin,getAllPost}) => {
       },
     })
       .then((res) => {
-        getAllPost();
+        fetchAllPosts();
       })
       .catch((err) => {
         console.log(`Echec suppression de post : ${err}`);
@@ -128,13 +134,10 @@ const CardPost = ({ post, isAdmin,getAllPost}) => {
   }, [post, isAdmin, userId]);
 
   useEffect(() => {
-    handleLikeCount();
-    fetchLikes();
     fetchAllComments()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[fetchAllComments]);
 
-  // console.log(post.post_imageUrl);
   return (
     <>
       <div className="containercard">
